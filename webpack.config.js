@@ -1,13 +1,20 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
+console.log(" ## path ##")
+console.log(__dirname+'/index.html')
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: 'index.html',
+  // path to build index.html in /build
+  template: '/index.html',
+  // filename: './index.html'
 })
+
 module.exports = {
+  mode: 'development',
   entry: ['./FE/index.js'],
   output: {
-    filename: 'build.js'
+    filename: 'bundle.[hash].js',
+    path: path.resolve(__dirname, "dist")
   },
   module: {
     rules: [
@@ -20,8 +27,18 @@ module.exports = {
             presets: ['@babel/preset-env'],
           }
         }
-      }
+      },
+      {
+        test: /\.png|svg|jpg|gif$/,
+        use: ["file-loader"],
+      },
     ]
   },
-  plugins: [htmlPlugin]
+  plugins: [htmlPlugin],
+  devServer: {
+    // console.log(__dirname),
+    contentBase: path.resolve(__dirname, '/dist'),
+    compress: true,
+    port: 8080,
+  }
 }
