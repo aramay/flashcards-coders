@@ -21,8 +21,8 @@ const LandingPage = () => {
         </Form>
       </Navbar>
     </>
-    );
-  }
+  );
+};
   
-  export default LandingPage
+export default LandingPage;
   
