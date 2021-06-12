@@ -4,6 +4,8 @@ const initialState = {
   decks: [
     {id: '1', title: 'JS Interview Questions', cards: '20'},
     {id: '2', title: 'Linked List Questions', cards: '10'},
+    {id: '3', title: 'React Questions', cards: '10'},
+    {id: '4', title: 'BST Questions', cards: '10'},
   ],
   status: 'idle',
   error: null
