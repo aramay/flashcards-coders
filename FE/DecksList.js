@@ -19,12 +19,11 @@ const DecksList = () => {
           <Card.Body>
             <Card.Title>{deck.title}</Card.Title>
             <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card`&apos`s content.
+              {deck.description}
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Total Cards : {deck.cards}</ListGroupItem>
+            <ListGroupItem>Total Cards : {deck.totalCards}</ListGroupItem>
             <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
             <ListGroupItem>Vestibulum at eros</ListGroupItem>
           </ListGroup>
