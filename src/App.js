@@ -4,19 +4,35 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Footer from '../FE/Footer';
 import DeckList from '../FE/DecksList';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirent,
+} from 'react-router-dom';
+
 
 const App = () => {
-  const m = [];
 
   return (
-    <Container className='p-3 content'>
-      <Jumbotron>
-        <h1 className='header'>Flash Cards - Coders</h1>
-        <LandingPage />
-        <DeckList />
-      </Jumbotron>
+    <Router>
+      <Container className='p-3 content'>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Jumbotron>
+                <h1 className='header'>Flash Cards - Coders</h1>
+                <LandingPage />
+                <DeckList />
+              </Jumbotron>
+            )}
+          />
+        </Switch>
+      </Container>
       <Footer />
-    </Container>
+    </Router>
   );
 };
 
