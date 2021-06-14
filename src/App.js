@@ -4,11 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Footer from '../FE/Footer';
 import DeckList from '../FE/DecksList';
+import {DeckCards} from '../FE/DeckCards';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirent,
+  Redirect,
 } from 'react-router-dom';
 
 
@@ -29,7 +30,10 @@ const App = () => {
               </Jumbotron>
             )}
           />
+          <Route exact path="/deckCards/:deckId" component={DeckCards} />
+          <Redirect to='/' />
         </Switch>
+        <Footer />
       </Container>
       <Footer />
     </Router>
