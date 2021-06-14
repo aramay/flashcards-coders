@@ -29,8 +29,11 @@ const DecksList = () => {
                 </ListGroupItem>
               </ListGroup>
               <Card.Body>
-                <Card.Link href="#">Learn</Card.Link>
-                <Card.Link href="#">Unlearn</Card.Link>
+                <Link to={`/deckCards/${deck.id}`}>
+                  <Button variant="primary">View Cards</Button>
+                </Link>
+                <Card.Link>View Cards</Card.Link>
+                <Card.Link>Unlearn</Card.Link>
               </Card.Body>
             </Card>
           </Col >
