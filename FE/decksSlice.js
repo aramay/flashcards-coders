@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   decks: [
@@ -10,6 +10,11 @@ const initialState = {
   status: 'idle',
   error: null
 };
+
+export const fetchDecks = createAsyncThunk('decks/fetchDecks', async () => {
+  const res = await fetch('/decks');
+  return res.decks;
+});
 
 const decksSlice = createSlice({
   name: 'decks',
