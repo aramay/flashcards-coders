@@ -35,7 +35,6 @@ const App = () => {
         </Switch>
         <Footer />
       </Container>
-      <Footer />
     </Router>
   );
 };
