@@ -1,15 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import {Col, Row, Container, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { fetchDecks } from './decksSlice';
 
 const DecksList = () => {
+  const dispatch = useDispatch();
   // state.decks.decks - comes from store prop - decks
   const decks = useSelector(state => state.decks.decks);
-
+  
+  const deckStatus = useSelector(state => state.decks.status);
+  
+  useEffect( () => {
+    if(deckStatus === 'idle') {
+      dispatch(fetchDecks());
+    }
+  }, [deckStatus, dispatch]);
   // const renderDecks = decks.map( deck => (
   return (
     <Container className='p-3'>
