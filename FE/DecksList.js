@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import {Col, Row, Container} from 'react-bootstrap';
+import {Col, Row, Container, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const DecksList = () => {
   // state.decks.decks - comes from store prop - decks
@@ -12,9 +13,9 @@ const DecksList = () => {
   // const renderDecks = decks.map( deck => (
   return (
     <Container className='p-3'>
-      <Row xs={1} md={2} className="g-4">
+      <Row xs={1} md={8} >
         {decks.map( deck => (
-          <Col xs={4} md={4} lg={6} key={deck.id}>
+          <Col xs={12} md={4} lg={6} key={deck.id}>
             <Card >
               <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
               <Card.Body>
