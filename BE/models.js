@@ -8,7 +8,8 @@ const pool = new Pool({
 });
 
 // export and object : query
-// query is a function that returns the invocation of pool.query() after logging the query
+// query is a function that returns the invocation of 
+// pool.query() after logging the query
 // export this object : query 
 
 module.exports = {
@@ -17,4 +18,4 @@ module.exports = {
     console.log('executed params ', params);
     return pool.query(text, params, callback);
   }
-}
+};
