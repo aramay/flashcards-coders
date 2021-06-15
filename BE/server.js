@@ -22,6 +22,19 @@ app.use('*', (req,res) => {
   res.send('Unkown request to server');
 });
 
+// global error handler
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware',
+    status: 500,
+    message: { err: 'An error occurred'}
+  };
+  const errObj = Object.assign({}, defaultErr, err);
+  console.error(errObj.log);
+  return res,status(errObj.status).json(errObj.message);
+});
+
+// start the server
 app.listen(PORT, () => {
   console.log(`Server listening on PORT ${PORT}..`);
 });
