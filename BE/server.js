@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
-
 const app  = express();
+const { getDecks } = require('./controller');
 
 const PORT = 3000;
 
@@ -15,9 +15,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 
 // handle get request to decks
-app.get('/decks', (req, res) => {
-  res.status(200).send('/deck GET request');
-});
+app.get('/decks', [getDecks]);
 
 // catch unkown request to server
 app.use('*', (req,res) => {
