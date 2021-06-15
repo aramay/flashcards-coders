@@ -22,8 +22,6 @@ app.use('*', (req,res) => {
   res.send('Unkown request to server');
 });
 
-
-
 app.listen(PORT, () => {
   console.log(`Server listening on PORT ${PORT}..`);
 });

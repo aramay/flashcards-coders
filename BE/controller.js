@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 const db = require('./models');
 
 const decksCtrl = {};
