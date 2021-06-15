@@ -14,7 +14,8 @@ decksCtrl.getDecks = async (req, res, next) => {
 
     res.locals = rows.map(deck => ({
       ...deck,
-      cards: cardRows.rows.filter( card => card.deck_id === deck.deck_id)
+      cards: cardRows.rows.filter( card => card.deck_id === deck.deck_id),
+      totalCards: 20
     }));
 
     res.send({decks: res.locals});
