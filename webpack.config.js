@@ -9,6 +9,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+  devtool: 'eval-source-map',
   mode: 'development',
   entry: ['./index.js'],
   output: {
@@ -39,8 +40,22 @@ module.exports = {
   },
   plugins: [htmlPlugin],
   devServer: {
+    host: 'localhost',
+    port: 8080,
     contentBase: path.resolve(__dirname, '/dist'),
     compress: true,
-    port: 8080,
+    publicPath: '/',
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    // fallback to root for other urls
+    historyApiFallback: true,
+
+    //setup proxy to access BE server
+    proxy: {
+      '/':{
+        target: 'http://localhost:3000/',
+        secure: false,
+        changeOrigin: true
+      }
+    }
   }
 };
