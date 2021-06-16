@@ -18,22 +18,24 @@ const App = () => {
   return (
     <Router>
       <Container className='p-3 content'>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={() => (
-              <Jumbotron>
-                <h1 className='header'>Flash Cards - Coders</h1>
-                <LandingPage />
-                <DeckList />
-              </Jumbotron>
-            )}
-          />
-          <Route exact path="/deckCards/:deckId" component={DeckCards} />
-          <Redirect to='/' />
-        </Switch>
-        <Footer />
+        <Jumbotron>
+          <h1 className='header'>Flash Cards - Coders</h1>
+          <LandingPage />
+          <Switch>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                <>
+                  <DeckList />
+                </>
+              )}
+            />
+            <Route exact path="/deckCards/:deckId" component={DeckCards} />
+            <Redirect to='/' />
+          </Switch>
+          <Footer />
+        </Jumbotron>
       </Container>
     </Router>
   );
