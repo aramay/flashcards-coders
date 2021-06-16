@@ -19,8 +19,22 @@ export const fetchDecks = createAsyncThunk('decks/fetchDecks', async () => {
 const decksSlice = createSlice({
   name: 'decks',
   initialState,
-  decksAdded: {
-    reducers: {}
+  reducers: {
+  },
+  extraReducers: {
+    [fetchDecks.pending]: (state, action) => {
+      state.status = 'loading';
+    },
+    [fetchDecks.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      console.log(action.payload);
+      console.log(action);
+      state.decks = state.decks.concat(action.payload);
+    },
+    [fetchDecks.rejected]: (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    }
   }
 });
 
