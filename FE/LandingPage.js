@@ -11,9 +11,9 @@ const LandingPage = () => {
       <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="#home">FC - Coders</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Create</Nav.Link>
-          <Nav.Link href="#features">Courses</Nav.Link>
-          <Nav.Link href="#pricing">Notification</Nav.Link>
+          <Nav.Link href="#create">Create</Nav.Link>
+          <Nav.Link href="#Courses">Courses</Nav.Link>
+          <Nav.Link href="#notification">Notification</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
