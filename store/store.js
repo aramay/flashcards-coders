@@ -10,6 +10,9 @@ import { persistReducer,
   REGISTER, } from 'redux-persist';
 import { combineReducers } from 'redux';
 
+/**
+ * https://edvins.io/how-to-use-redux-persist-with-redux-toolkit
+ */
 const reducers = combineReducers({
   decks: decksReducer,
 });
