@@ -20,3 +20,9 @@ html body {
   bottom: 0;
   background-color: #e9ecef;
 }
+
+@font-face {
+  font-family: "Skyfont";
+  /* font-weight: bold; */
+  src: url("./fonts/Skyfont-NonCommercial.otf") format("opentype");
+}
