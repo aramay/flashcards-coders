@@ -13,6 +13,10 @@
   height: 150px;
   width: 180px;
 }
+
+.padding-btm {
+  padding-bottom: 10px;
+}
 html body {
   height: 100%
 }

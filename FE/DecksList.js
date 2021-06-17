@@ -10,7 +10,7 @@ import { fetchDecks } from './decksSlice';
 const DeckCards = ( { deck }) => {
   return (
     
-    <Col xs={12} md={4} lg={6} >
+    <Col xs={12} md={4} lg={6} className='padding-btm'>
       <Card >
         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
         <Card.Body>
