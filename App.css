@@ -1,5 +1,12 @@
 .header {
   text-align: center;
+  font-family: Skyfont;
+  font-size: 8em;
+}
+
+.text-style {
+  font-family: Skyfont;
+  font-size: 2em;
 }
 
 html body {
@@ -23,6 +30,5 @@ html body {
 
 @font-face {
   font-family: "Skyfont";
-  /* font-weight: bold; */
   src: url("./fonts/Skyfont-NonCommercial.otf") format("opentype");
 }
