@@ -9,6 +9,10 @@
   font-size: 2em;
 }
 
+.thumbnails {
+  height: 150px;
+  width: 180px;
+}
 html body {
   height: 100%
 }
