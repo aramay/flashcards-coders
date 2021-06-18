@@ -1,0 +1,82 @@
+drop table decks
+
+create table if not exists decks(
+	deck_id serial PRIMARY key,
+	title varchar (500) not null,
+	description varchar(500),
+	created_on TIMESTAMP NOT NULL
+);
+
+select * from decks
+
+-- START testing few sql cmds
+-- select * from decks1
+
+insert into 
+	decks(title, description, created_on)
+values
+	('this is title10', 'this is description10',current_timestamp);
+
+-- END testing few sql cmds
+
+
+
+select * from cards
+where deck_id in (
+	select deck_id
+	from cards
+	where deck_id = 1
+)
+
+-- this does not work
+select question, answer
+from cards
+right join decks ON decks.id = cards.id
+where decks.id = 1
+-- this does not work
+
+drop table cards
+
+create table cards(
+	card_id serial PRIMARY key,
+	deck_id int,
+	question varchar(500) not null ,
+	answer varchar(500) not null,
+	constraint fk_deck
+		foreign key (deck_id)
+		references decks(deck_id)
+		on delete cascade
+)
+
+select * from decks
+select * from cards where card_id = 1
+-- get all cards - with where clause
+select * from cards
+where deck_id = 3
+-- get all cards - with where clause
+insert into 
+	cards (deck_id, question, answer)
+values
+	(1,'this is a question', 'this is the answer'),
+	(1,'this is a question', 'this is the answer'),
+	(2,'this is a question', 'this is the answer');
+	
+
+-- drop table reviews
+-- currently there is no relationship btw decks - reviews / cards - reviews
+create table if not exists reviews(
+	review_id serial PRIMARY key,
+	question varchar(500) not null ,
+	answer varchar(500) not null,
+	created_on TIMESTAMP NOT NULL
+);
+
+select * from reviews
+
+
+insert into 
+	reviews (question, answer, created_on)
+values
+	('this is a question', 'this is the answer',current_timestamp),
+	('this is a question', 'this is the answer',current_timestamp),
+	('this is a question', 'this is the answer',current_timestamp);
