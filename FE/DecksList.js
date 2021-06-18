@@ -6,13 +6,25 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import {Col, Row, Container, Button, Spinner} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { fetchDecks } from './decksSlice';
+import { useHistory } from 'react-router-dom';
+import './images/0.png';
+import './images/1.png';
+import './images/2.png';
+import './images/3.png';
+import './images/4.png';
+import './images/5.png';
+import './images/6.png';
+import './images/7.png';
+import './images/8.png';
+import './images/9.png';
+// const img = require('../public/0.png');
 
-const DeckCards = ( { deck }) => {
+const DeckCards = ( { deck, index }) => {
   return (
     
     <Col xs={12} md={4} lg={6} className='padding-btm'>
       <Card >
-        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+        <Card.Img variant="top" src={`./images/${index}.png`} className='thumbnails'/>
         <Card.Body>
           <Card.Title>{deck.title}</Card.Title>
           <Card.Text>
@@ -25,7 +37,7 @@ const DeckCards = ( { deck }) => {
           </ListGroupItem>
         </ListGroup>
         <Card.Body>
-          <Link to={`/deckCards/${deck.id}`}>
+          <Link to={`/deckCards/${deck.deck_id}`}>
             <Button variant="primary">View Cards</Button>
           </Link>
         </Card.Body>
@@ -55,15 +67,15 @@ const DecksList = () => {
     
   } else if (deckStatus === 'succeeded') {
     
-    content = decks.map( deck => (
-      <DeckCards key={deck.deck_id} deck={deck} />
+    content = decks.map( (deck, index) => (
+      <DeckCards key={deck.deck_id} deck={deck} index={index}/>
     ));
   } else if (deckStatus === 'failed') {
     content = <div>{error}</div>;
   }
   return (
-    <Container className='p-3'>
-      <Row xs={1} md={8} >
+    <Container >
+      <Row  >
         {content}
       </Row>
     </Container>
