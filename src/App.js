@@ -1,12 +1,9 @@
 import React from 'react';
 import LandingPage from '../FE/LandingPage';
-import Container from 'react-bootstrap/Container';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Footer from '../FE/Footer';
+import { Container, Jumbotron, Navbar } from 'react-bootstrap';
 import DeckList from '../FE/DecksList';
 import { DeckCards } from '../FE/DeckCards';
 import { ReviewCards }  from '../FE/ReviewCards';
-import Navbar from 'react-bootstrap/Navbar';
 import {
   BrowserRouter as Router,
   Switch,
