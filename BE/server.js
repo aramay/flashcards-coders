@@ -32,7 +32,8 @@ app.use((err, req, res, next) => {
   };
   const errObj = Object.assign({}, defaultErr, err);
   console.error(errObj.log);
-  return res,status(errObj.status).json(errObj.message);
+  console.error(errObj.message);
+  return res.status(errObj.status).json(errObj.message);
 });
 
 // start the server

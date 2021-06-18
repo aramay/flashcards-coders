@@ -7,6 +7,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBBtn
 import getStoredState from 'redux-persist/es/getStoredState';
 // import { reviewCards } from './decksSlice';
 import { reviewCardsCount } from './decksSlice';
+import '../'
 
 let counter = 0;
 
@@ -26,11 +27,11 @@ const ReviewCardsList = ({reviews, onNextQuestion, counter}) => {
         </MDBCard>
       </MDBCol>
 
-      <MDBCol sm='5'>
+      <MDBCol sm='5' >
         <MDBCard>
           <MDBCardBody>
             <MDBCardTitle>Answer</MDBCardTitle>
-            <MDBCardText>
+            <MDBCardText className='blur'>
               {reviews[counter].answer}
             </MDBCardText>
           </MDBCardBody>
@@ -69,7 +70,7 @@ export const ReviewCards = () => {
     console.log('counter before click ', counter);
     console.log('params', index);
     // const newReviewList = reviews.splice(index, 1);
-    const newReviewList = reviews.filter( review => review.card_id !== index);
+    const newReviewList = reviews.filter( review => review.review_id !== index);
     counter ++;
     console.log('counter after click ', counter);
     setReviews(newReviewList);

@@ -17,6 +17,7 @@ import './images/6.png';
 import './images/7.png';
 import './images/8.png';
 import './images/9.png';
+import './images/10.png';
 // const img = require('../public/0.png');
 
 const DeckCards = ( { deck, index }) => {
