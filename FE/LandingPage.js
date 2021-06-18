@@ -6,16 +6,17 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { reviewCardsCount } from './decksSlice';
 const LandingPage = () => {
 
   const reviewCount = useSelector(state => 
-    state.decks.reviews.length
+    reviewCardsCount(state)
   );
 
   return (
     <>
       <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="#home" className='text-style'>FC-Coders</Navbar.Brand>
+        <Navbar.Brand href="/" className='text-style'>FC-Coders</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="#create">Create</Nav.Link>
           <Nav.Link href="#Topics">Topics</Nav.Link>
