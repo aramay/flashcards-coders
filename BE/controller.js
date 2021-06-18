@@ -18,11 +18,37 @@ decksCtrl.getDecks = async (req, res, next) => {
       totalCards: 20
     }));
 
+    console.log(res.locals);
     res.send({decks: res.locals});
 
   } catch( err) {
     return next({
       mesg: `getDecks ctrl failed ${err}`
+    });
+  }
+};
+
+decksCtrl.addCardToReview = async(req, res, next) => {
+
+  console.log(req.body);
+  // { card_id: 2 }
+  const { card_id } = req.body;
+
+  const queryCards = 'select * from cards where card_id = $1';
+  const values = [card_id];
+
+  try {
+    let results = await db.query(queryCards, values);
+    results = results.rows;
+    // res.send('/addCardToReview req');
+    console.log(results);
+    res.send({reviews: results});
+
+    console.log(results);
+  } catch(err) {
+    return next({
+      log: `err in addCardToReview ${err}`,
+      message: { err: `An error occurred in addCardToReview ${err}`}
     });
   }
 };
