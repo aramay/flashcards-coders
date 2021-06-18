@@ -1,0 +1,11 @@
+CREATE FUNCTION notify_decks() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    PERFORM pg_notify('addedrecord', NEW.title);
+    RETURN NULL;
+END;
+$$;
+
+CREATE TRIGGER updated_decks_trigger AFTER INSERT ON reviews
+FOR EACH ROW EXECUTE PROCEDURE notify_decks();
