@@ -4,16 +4,27 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 const LandingPage = () => {
+
+  const reviewCount = useSelector(state => 
+    state.decks.reviews.length
+  );
+
   return (
     <>
       <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="#home">FC - Coders</Navbar.Brand>
+        <Navbar.Brand href="#home" className='text-style'>FC-Coders</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="#create">Create</Nav.Link>
-          <Nav.Link href="#Courses">Courses</Nav.Link>
-          <Nav.Link href="#notification">Notification</Nav.Link>
+          <Nav.Link href="#Topics">Topics</Nav.Link>
+          <Link to={'/reviews'}>
+            <Navbar.Text>
+            Review Count
+              <span>&nbsp; {reviewCount}</span > 
+            </Navbar.Text>
+          </Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
