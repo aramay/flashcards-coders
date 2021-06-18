@@ -35,7 +35,7 @@ const App = () => {
             <Redirect to='/' />
           </Switch>
           <Navbar fixed="bottom" variant="light" bg="light">
-            <Navbar.Brand className='center-align'>Made by @aramay </Navbar.Brand>
+            <Navbar.Brand className='center-align'>Developed by @aramay </Navbar.Brand>
           </Navbar>
         </Jumbotron>
       </Container>
