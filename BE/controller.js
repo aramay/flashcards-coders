@@ -23,7 +23,8 @@ decksCtrl.getDecks = async (req, res, next) => {
 
   } catch( err) {
     return next({
-      mesg: `getDecks ctrl failed ${err}`
+      log: `decksCtrl.getDecks failed ${err}`,
+      message: {err: `getDecks ctrl failed ${err}`}
     });
   }
 };
