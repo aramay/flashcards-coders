@@ -14,6 +14,21 @@
   width: 180px;
 }
 
+a:active {
+  color: #fff;
+}
+
+.add-space {
+  text-indent: 1em;
+}
+
+body {
+  background-color: currentColor;
+}
+.center-align {
+  margin: auto;
+}
+
 .padding-btm {
   padding-bottom: 10px;
   padding-top: 10px;
