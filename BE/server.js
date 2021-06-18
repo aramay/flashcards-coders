@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app  = express();
-const { getDecks } = require('./controller');
+const { getDecks, addCardToReview } = require('./controller');
 
 const PORT = 3000;
 
@@ -17,6 +17,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 // handle get request to decks
 app.get('/decks', [getDecks]);
 
+app.post('/addCardToReview', [addCardToReview]);
 // catch unkown request to server
 app.use('*', (req,res) => {
   res.send('Unkown request to server');
