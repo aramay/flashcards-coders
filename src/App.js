@@ -34,12 +34,10 @@ const App = () => {
             <Route exact path="/reviews" component={ReviewCards} />
             <Redirect to='/' />
           </Switch>
-        </Jumbotron>
-        <Container>
           <Navbar fixed="bottom" variant="light" bg="light">
-            <Navbar.Brand className='center-align'>Made By @aramay </Navbar.Brand>
+            <Navbar.Brand className='center-align'>Made by @aramay </Navbar.Brand>
           </Navbar>
-        </Container>
+        </Jumbotron>
       </Container>
     </Router>
   );
