@@ -1,0 +1,58 @@
+.header {
+  text-align: center;
+  font-family: Skyfont;
+  font-size: 8em;
+}
+
+.text-style {
+  font-family: Skyfont;
+  font-size: 2em;
+}
+
+.thumbnails {
+  height: 150px;
+  width: 180px;
+}
+
+a:active {
+  color: #fff;
+}
+
+.add-space {
+  text-indent: 1em;
+}
+
+body {
+  background-color: currentColor;
+}
+.center-align {
+  margin: auto;
+}
+
+.padding-btm {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+html body {
+  height: 100%
+}
+
+#entry-point {
+  min-height: 100%;
+  margin-bottom: -50px
+}
+
+.content {
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #e9ecef;
+}
+
+@font-face {
+  font-family: "Skyfont";
+  src: url("./fonts/Skyfont-NonCommercial.otf") format("opentype");
+}
