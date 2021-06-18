@@ -34,7 +34,6 @@ const App = () => {
             <Route exact path="/reviews" component={ReviewCards} />
             <Redirect to='/' />
           </Switch>
-          <Footer />
         </Jumbotron>
         <Container>
           <Navbar fixed="bottom" variant="light" bg="light">
