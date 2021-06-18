@@ -1,43 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { selectCardById } from './decksSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap-floating-label';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBBtn } from 'mdb-react-ui-kit';
 import {Col, Row, Container, Button, Spinner} from 'react-bootstrap';
 import { addCardToReview } from './decksSlice';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { reviewCardsCount } from './decksSlice';
 
+const LearnBtn = ({card_id}) => {
 
-const LearnBtn = () => {
-  const addCardToReviewClicked = () => {
-    dispatchEvent(addCardToReview());
+  const dispatch = useDispatch();
+  const reviewCount = useSelector(state => 
+    reviewCardsCount(state)
+  );
+
+  let [reviewCCount, setReviewCCount] = useState(reviewCount);
+
+  const addCardToReviewClicked = async () => {
+    console.log('addCardToReviewClicked ', card_id);
+    try {
+      const res = await dispatch(addCardToReview({card_id}));
+      console.log('deckCards ', res);
+      setReviewCCount(( ) => reviewCCount ++);
+      unwrapResult(res);
+    } catch(err) {
+      console.error(`Failed request /addCardToReview ${err}`);
+    }
   };
 
   return (
     <Button
       variant="primary"
       onClick={addCardToReviewClicked}
-    >
+    > Learn
     </Button>
   );
 };
 
 const CardsList = ({ card }) => {
+  console.log('CardList ', card);
   return (
-    <MDBRow>
-      <MDBCol sm='4'>
+    <MDBRow className='padding-btm'>
+      <MDBCol sm='5'>
         <MDBCard>
           <MDBCardBody>
-            <MDBCardTitle>Question</MDBCardTitle>
+            <MDBCardTitle>Question {card.card_id}</MDBCardTitle>
             <MDBCardText>
               {card.question}
             </MDBCardText>
           </MDBCardBody>
-          <LearnBtn />
+          
         </MDBCard>
       </MDBCol>
 
-      <MDBCol sm='4'>
+      <MDBCol sm='5'>
         <MDBCard>
           <MDBCardBody>
             <MDBCardTitle>Answer</MDBCardTitle>
@@ -47,28 +65,27 @@ const CardsList = ({ card }) => {
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
+      <LearnBtn card_id={card.card_id}sm='2' />
     </MDBRow>
   );
 };
 
 export const DeckCards = ({match}) => {
 
-  console.log(match);
+  console.log('DeckCards ', match);
   const { deckId } = match.params;
 
   const deckCards = useSelector(state => selectCardById (state, deckId));
-  console.log(deckCards);
+  console.log('DeckCards ', deckCards);
 
-  let content;
-
-  deckCards.map( card => (
-    content = <CardsList card={card} key={card.card_id}/>
+  const content = deckCards.map( card => (
+    <CardsList card={card} key={card.card_id} />
   ));
 
   return (
-    <>
+    <Container>
       {content}
-    </>
+    </Container>
   );
 };
 
