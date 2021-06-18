@@ -36,16 +36,32 @@ decksCtrl.addCardToReview = async(req, res, next) => {
   const { card_id } = req.body;
 
   const queryCards = 'select * from cards where card_id = $1';
-  const values = [card_id];
+  const queryCardsValues = [card_id];
 
+  const insertReviews = `insert into 
+                          reviews(question, answer, created_on)
+                          values
+                          ($1, $2,current_timestamp)
+                          RETURNING *`;
+  
   try {
-    let results = await db.query(queryCards, values);
+    let results = await db.query(queryCards, queryCardsValues);
+    // get Cards from DB
     results = results.rows;
-    // res.send('/addCardToReview req');
-    console.log(results);
-    res.send({reviews: results});
+    console.log('results ', results);
+    // destructure properties 
+    const {question, answer} = results[0];
 
-    console.log(results);
+    const values = [question, answer];
+
+    // insert new record in DB
+    let reviews = await db.query(insertReviews, values);
+
+    console.log('reviews ', reviews.rows);
+
+    // send review record
+    reviews = reviews.rows;
+    res.send({reviews: reviews});
   } catch(err) {
     return next({
       log: `err in addCardToReview ${err}`,
