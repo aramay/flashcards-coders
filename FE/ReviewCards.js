@@ -7,7 +7,6 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBBtn
 import getStoredState from 'redux-persist/es/getStoredState';
 // import { reviewCards } from './decksSlice';
 import { reviewCardsCount } from './decksSlice';
-import '../'
 
 let counter = 0;
 
